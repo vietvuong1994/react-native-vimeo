@@ -1,0 +1,24 @@
+{
+  "name": "react-native-vimeo",
+  "version": "0.1.0",
+  "description": "A <Vimeo/> component for React Native.",
+  "main": "Vimeo.ios.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-mcleod/react-native-vimeo.git"
+  },
+  "keywords": [
+    "vimeo",
+    "react",
+    "react-native"
+  ],
+  "author": "Alex McLeod",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alex-mcleod/react-native-vimeo/issues"
+  },
+  "homepage": "https://github.com/alex-mcleod/react-native-vimeo#readme"
+}

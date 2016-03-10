@@ -8,7 +8,7 @@
 
 #import "RCTVimeoManager.h"
 #import "RCTViewManager.h"
-#import <MapKit/MapKit.h>
+#import "VIMVideoPlayerView.h"
 
 @interface RCTVimeoManager()
 
@@ -20,7 +20,9 @@ RCT_EXPORT_MODULE();
     
 - (UIView *)view
 {
-    return [[MKMapView alloc] init];
+    VIMVideoPlayerView *view = [[VIMVideoPlayerView alloc] init];
+    [view.player setURL:@"https://vimeo.com/channels/pointofview/151075796"];
+    return view;
 }
 
 @end

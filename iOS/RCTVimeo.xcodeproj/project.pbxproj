@@ -6,10 +6,17 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXFileReference section */
+		FAE502B81C9100B60048A7B1 /* RCTVimeoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTVimeoManager.h; sourceTree = "<group>"; };
+		FAE502B91C9100C70048A7B1 /* RCTVimeoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTVimeoManager.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
 		FA8863E31C90FB5C008FF5F4 = {
 			isa = PBXGroup;
 			children = (
+				FAE502B91C9100C70048A7B1 /* RCTVimeoManager.m */,
+				FAE502B81C9100B60048A7B1 /* RCTVimeoManager.h */,
 			);
 			sourceTree = "<group>";
 		};

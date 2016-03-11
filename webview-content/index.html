@@ -10,7 +10,6 @@
   <script>
 
     var PLAYER_ID = 'player';
-    var EVENTS = ['play', 'playProgress', 'pause', 'finish'];
 
     function getParameterByName(name, url) {
       // From http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
@@ -56,9 +55,9 @@
      var iframe;
      iframe = document.createElement('iframe');
      iframe.src = 'https://player.vimeo.com/video/' + vid + '?api=1&player_id=' + PLAYER_ID;
-     iframe.width = '100%'
-     iframe.height = '98%'
-     iframe.frameborder = '0'
+     iframe.width = '100%';
+     iframe.height = '98%';
+     iframe.frameborder = '0';
      iframe.webkitallowfullscreen = true;
      iframe.allowfullscreen = true;
      iframe.id = PLAYER_ID;
@@ -66,23 +65,36 @@
 
      var player = $f(iframe);
 
-     player.addEvent("ready", function() {
-       EVENTS.forEach(evt => {
-         player.addEvent(evt, function(data) {
-           var payload = {
-             name: evt,
-             data: data
-           }
-           webViewBridge.send(JSON.stringify(payload));
-         });
-       });
-      //  player.api("getDuration", function(dur) {
-      //    webViewBridge.send("video duration: " + dur);
-      //  });
-      //  player.addEvent("playProgress", function() { webViewBridge.send("PLAYER START")});
+     // Bind player events to `sendEvent` function so that they are passed
+     // through the bridge.
+     player.addEvent('ready', function() {
+       // Ideally we could just iterate over event names and add the sendEvent
+       // handler to each of them, however that doesn't work because sendEvent
+       // ends up just being called with whatever was the last event in the array.
+       player.addEvent('play', function(data) {sendEvent('play', data)});
+       player.addEvent('playProgress', function(data) {sendEvent('playProgress', data)});
+       player.addEvent('pause', function(data) {sendEvent('pause', data)});
+       player.addEvent('finish', function(data) {sendEvent('finish', data)});
+       sendEvent('ready');
      });
 
-     webViewBridge.send("Webview bridge ready");
+     // Assume every message passed in as Vimeo API
+     // method name, so just call that method and send the
+     // result back.
+     webViewBridge.onMessage = function(message) {
+       player.api(message, function(data) {
+         sendEvent(message, data);
+       });
+     }
+
+     function sendEvent(evt, data) {
+       // Passes events through the bridge
+       var payload = {
+         name: evt,
+         data: data
+       }
+       webViewBridge.send(JSON.stringify(payload));
+     }
 
    });
 

@@ -10,7 +10,11 @@ const {
 import WebViewBridge from 'react-native-webview-bridge';
 
 
-// TODO - Will have to use this https://github.com/alinz/react-native-webview-bridge
+function getVimeoPageURL(videoId) {
+  return 'https://myagi.github.io/react-native-vimeo/?vid=' + videoId;
+}
+
+
 export default class Vimeo extends React.Component {
 
   static propTypes = {
@@ -83,7 +87,7 @@ export default class Vimeo extends React.Component {
           margin: -4,
           height: this.props.height
         }}
-        source={{uri: 'http://localhost:5000/?vid=' + this.props.videoId}}
+        source={{uri: getVimeoPageURL(this.props.videoId)}}
         scalesPageToFit={true}
         scrollEnabled={false}
         onBridgeMessage={this.onBridgeMessage}

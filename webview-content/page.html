@@ -310,15 +310,12 @@
            player.addEvent("playProgress", function() { webViewBridge.send("PLAYER START")});
        });
 
+       player.api("getDuration", function(dur) {
+         webViewBridge.send("video duration: " + dur);
+       });
+
        webViewBridge.send("Webview bridge ready");
 
-     });
-
-     var player = $f("player1");
-
-     player.addEvent("ready", function() {
-        player.api("play");
-        player.addEvent("playProgress", function() { console.log("STARTED")});
      });
 
 

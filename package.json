@@ -8,19 +8,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alex-mcleod/react-native-vimeo.git"
+    "url": "git+https://github.com/Myagi/react-native-vimeo.git"
   },
   "keywords": [
-    "vimeo",
+    "alex-mcleod",
+    "Myagi",
     "react",
     "react-native"
   ],
   "author": "Alex McLeod",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alex-mcleod/react-native-vimeo/issues"
+    "url": "https://github.com/Myagi/react-native-vimeo/issues"
   },
-  "homepage": "https://github.com/alex-mcleod/react-native-vimeo#readme",
+  "homepage": "https://github.com/Myagi/react-native-vimeo#readme",
   "peerDependencies": {
     "react-native-webview-bridge": "^0.20.3"
   }

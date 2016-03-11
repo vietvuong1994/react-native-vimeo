@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/alex-mcleod/react-native-vimeo/issues"
   },
-  "homepage": "https://github.com/alex-mcleod/react-native-vimeo#readme"
+  "homepage": "https://github.com/alex-mcleod/react-native-vimeo#readme",
+  "peerDependencies": {
+    "react-native-webview-bridge": "^0.20.3"
+  }
 }

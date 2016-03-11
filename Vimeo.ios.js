@@ -4,39 +4,48 @@
  */
 import React from 'react-native';
 const {
-  View,
   StyleSheet,
-  PropTypes,
-  WebView
+  PropTypes
 } = React;
+import WebViewBridge from 'react-native-webview-bridge';
 
+import {getPlayerHTML, injectScript} from './webview-content';
+
+
+// TODO - Will have to use this https://github.com/alinz/react-native-webview-bridge
 export default class Vimeo extends React.Component {
 
   static propTypes = {
     videoId: PropTypes.string.isRequired
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      this.refs.webviewBridge.sendToBridge('Hi there!');
+    }, 500);
+  }
+
   getHTMLString() {
-    let html = `<iframe
-      src="https://player.vimeo.com/video/${this.props.videoId}"
-      width="100%"
-      height="98%"
-      frameborder="0"
-      webkitallowfullscreen
-      allowfullscreen></iframe>`;
-    return html;
+    return getPlayerHTML(this.props.videoId);
+  }
+
+  onBridgeMessage = (message) => {
+    console.log("Received message from webview:", message);
   }
 
   render() {
     return (
-      <WebView
+      <WebViewBridge
+        ref='webviewBridge'
         style={{
           margin: -3,
           height: this.props.height
         }}
-        html={this.getHTMLString()}
+        source={{uri: 'http://localhost:5000/page.html'}}
         scalesPageToFit={true}
         scrollEnabled={false}
+        onBridgeMessage={this.onBridgeMessage}
+        onError={(error)=>{console.log(error)}}
       />
     );
   }

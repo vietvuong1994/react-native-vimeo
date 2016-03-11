@@ -41,6 +41,9 @@ message to the HTML page via the webview bridge.
 Ideally, the HTML page content would just be passed as a string into the webview, however if that
 were the case then the Vimeo JS API would not function. As stated in the Vimeo JS API
 documentation, the Froogaloop library can only interact with the Vimeo iframe when the page is
-served up by a web server, not when it is loaded locally. If you would like to view the contents
-of the HTML page used, simply clone this repo and checkout the `gh-pages` branch (more info
-here https://help.github.com/articles/creating-project-pages-manually/).
+served up by a web server, not when it is loaded locally.
+
+If you would like to view the contents of the HTML page used, simply clone this repo
+and checkout the `gh-pages` branch (more info here
+https://help.github.com/articles/creating-project-pages-manually/). Alternatively, just visit
+http://myagi.github.io/react-native-vimeo/ and view the source.

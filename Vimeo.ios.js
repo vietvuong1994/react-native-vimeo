@@ -84,11 +84,12 @@ export default class Vimeo extends React.Component {
         ref='webviewBridge'
         style={{
           // Accounts for player border
-          margin: -4,
+          marginTop: -8,
+          marginLeft: -10,
           height: this.props.height
         }}
         source={{uri: getVimeoPageURL(this.props.videoId)}}
-        scalesPageToFit={true}
+        scalesPageToFit={false}
         scrollEnabled={false}
         onBridgeMessage={this.onBridgeMessage}
         onError={(error)=> console.error(error)}

@@ -11,7 +11,7 @@ import WebViewBridge from 'react-native-webview-bridge';
 
 
 function getVimeoPageURL(videoId) {
-  return 'https://myagi.github.io/react-native-vimeo/?vid=' + videoId;
+  return 'https://myagi.github.io/react-native-vimeo/v0.3.0.html?vid=' + videoId;
 }
 
 

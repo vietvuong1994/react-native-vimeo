@@ -5,7 +5,7 @@
 import React from 'react';
 import {
   StyleSheet
-} from 'react-native'
+} from 'react-native';
 import WebViewBridge from 'react-native-webview-bridge';
 
 
@@ -73,25 +73,25 @@ export default class Vimeo extends React.Component {
   }
 
   onReady = () => {
-    this.setState({ready: true});
+    this.setState({ ready: true });
     if (this.props.onReady) this.props.onReady();
   }
 
   render() {
     return (
       <WebViewBridge
-        ref='webviewBridge'
+        ref="webviewBridge"
         style={{
           // Accounts for player border
           marginTop: -8,
           marginLeft: -10,
           height: this.props.height
         }}
-        source={{uri: getVimeoPageURL(this.props.videoId)}}
+        source={{ uri: getVimeoPageURL(this.props.videoId) }}
         scalesPageToFit={false}
         scrollEnabled={false}
         onBridgeMessage={this.onBridgeMessage}
-        onError={(error)=> console.error(error)}
+        onError={(error) => console.error(error)}
       />
     );
   }

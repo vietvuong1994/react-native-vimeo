@@ -22,7 +22,8 @@ export default class Vimeo extends React.Component {
     onPlay: React.PropTypes.func,
     onPlayProgress: React.PropTypes.func,
     onPause: React.PropTypes.func,
-    onFinish: React.PropTypes.func
+    onFinish: React.PropTypes.func,
+    scalesPageToFit: React.PropTypes.bool
   }
 
   constructor() {
@@ -74,7 +75,7 @@ export default class Vimeo extends React.Component {
 
   onReady = () => {
     this.setState({ ready: true });
-    // Defer calling `this.props.onReady`. This ensures 
+    // Defer calling `this.props.onReady`. This ensures
     // that `this.state.ready` will be updated to
     // `true` by the time it is called.
     if (this.props.onReady) setTimeout(this.props.onReady);
@@ -91,7 +92,7 @@ export default class Vimeo extends React.Component {
           height: this.props.height
         }}
         source={{ uri: getVimeoPageURL(this.props.videoId) }}
-        scalesPageToFit={false}
+        scalesPageToFit={this.props.scalesPageToFit}
         scrollEnabled={false}
         onBridgeMessage={this.onBridgeMessage}
         onError={(error) => console.error(error)}

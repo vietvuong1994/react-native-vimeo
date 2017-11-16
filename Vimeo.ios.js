@@ -3,29 +3,24 @@
  * @flow
  */
 import React from 'react';
-import {
-  StyleSheet
-} from 'react-native';
-import PropTypes from 'prop-types';
-import WebViewBridge from 'react-native-webview-bridge';
-
+import { StyleSheet, WebView } from 'react-native';
 
 function getVimeoPageURL(videoId) {
-  return 'https://myagi.github.io/react-native-vimeo/v0.3.0.html?vid=' + videoId;
+  return (
+    'https://myagi.github.io/react-native-vimeo/v0.3.0.html?vid=' + videoId
+  );
 }
 
-
 export default class Vimeo extends React.Component {
-
   static propTypes = {
-    videoId: PropTypes.string.isRequired,
-    onReady: PropTypes.func,
-    onPlay: PropTypes.func,
-    onPlayProgress: PropTypes.func,
-    onPause: PropTypes.func,
-    onFinish: PropTypes.func,
-    scalesPageToFit: PropTypes.bool
-  }
+    videoId: React.PropTypes.string.isRequired,
+    onReady: React.PropTypes.func,
+    onPlay: React.PropTypes.func,
+    onPlayProgress: React.PropTypes.func,
+    onPause: React.PropTypes.func,
+    onFinish: React.PropTypes.func,
+    scalesPageToFit: React.PropTypes.bool
+  };
 
   constructor() {
     super();
@@ -45,7 +40,9 @@ export default class Vimeo extends React.Component {
 
   api(method, cb) {
     if (!this.state.ready) {
-      throw new Error('You cannot use the `api` method until `onReady` has been called');
+      throw new Error(
+        'You cannot use the `api` method until `onReady` has been called'
+      );
     }
     this.refs.webviewBridge.sendToBridge(method);
     this.registerBridgeEventHandler(method, cb);
@@ -63,7 +60,7 @@ export default class Vimeo extends React.Component {
     this.handlers[eventName] = handler;
   }
 
-  onBridgeMessage = (message) => {
+  onBridgeMessage = message => {
     let payload;
     try {
       payload = JSON.parse(message);
@@ -72,7 +69,7 @@ export default class Vimeo extends React.Component {
     }
     let handler = this.handlers[payload.name];
     if (handler) handler(payload.data);
-  }
+  };
 
   onReady = () => {
     this.setState({ ready: true });
@@ -80,11 +77,11 @@ export default class Vimeo extends React.Component {
     // that `this.state.ready` will be updated to
     // `true` by the time it is called.
     if (this.props.onReady) setTimeout(this.props.onReady);
-  }
+  };
 
   render() {
     return (
-      <WebViewBridge
+      <WebView
         ref="webviewBridge"
         style={{
           // Accounts for player border
@@ -96,9 +93,8 @@ export default class Vimeo extends React.Component {
         scalesPageToFit={this.props.scalesPageToFit}
         scrollEnabled={false}
         onBridgeMessage={this.onBridgeMessage}
-        onError={(error) => console.error(error)}
+        onError={error => console.error(error)}
       />
     );
   }
-
 }

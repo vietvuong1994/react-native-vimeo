@@ -3,23 +3,40 @@
  * @flow
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, WebView } from 'react-native';
 
 function getVimeoPageURL(videoId) {
-  return (
-    'https://myagi.github.io/react-native-vimeo/v0.3.0.html?vid=' + videoId
-  );
+  return 'https://myagi.github.io/react-native-vimeo/v1.html?vid=' + videoId;
 }
+
+// NOTE: Injecting code here due to react-native webview issues when overriding
+// the onMessage method. See here: https://github.com/facebook/react-native/issues/10865
+export const injectedCode = `
+(function() {
+var originalPostMessage = window.postMessage;
+
+var patchedPostMessage = function(message, targetOrigin, transfer) {
+  originalPostMessage(message, targetOrigin, transfer);
+};
+
+patchedPostMessage.toString = function() {
+  return String(Object.hasOwnProperty).replace('hasOwnProperty', 'postMessage');
+};
+
+window.postMessage = patchedPostMessage;
+})();
+`;
 
 export default class Vimeo extends React.Component {
   static propTypes = {
-    videoId: React.PropTypes.string.isRequired,
-    onReady: React.PropTypes.func,
-    onPlay: React.PropTypes.func,
-    onPlayProgress: React.PropTypes.func,
-    onPause: React.PropTypes.func,
-    onFinish: React.PropTypes.func,
-    scalesPageToFit: React.PropTypes.bool
+    videoId: PropTypes.string.isRequired,
+    onReady: PropTypes.func,
+    onPlay: PropTypes.func,
+    onPlayProgress: PropTypes.func,
+    onPause: PropTypes.func,
+    onFinish: PropTypes.func,
+    scalesPageToFit: PropTypes.bool
   };
 
   constructor() {
@@ -44,7 +61,6 @@ export default class Vimeo extends React.Component {
         'You cannot use the `api` method until `onReady` has been called'
       );
     }
-    this.refs.webviewBridge.sendToBridge(method);
     this.registerBridgeEventHandler(method, cb);
   }
 
@@ -60,7 +76,8 @@ export default class Vimeo extends React.Component {
     this.handlers[eventName] = handler;
   }
 
-  onBridgeMessage = message => {
+  onBridgeMessage = event => {
+    const message = event.nativeEvent.data;
     let payload;
     try {
       payload = JSON.parse(message);
@@ -89,10 +106,11 @@ export default class Vimeo extends React.Component {
           marginLeft: -10,
           height: this.props.height
         }}
+        injectedJavaScript={injectedCode}
         source={{ uri: getVimeoPageURL(this.props.videoId) }}
         scalesPageToFit={this.props.scalesPageToFit}
         scrollEnabled={false}
-        onBridgeMessage={this.onBridgeMessage}
+        onMessage={this.onBridgeMessage}
         onError={error => console.error(error)}
       />
     );

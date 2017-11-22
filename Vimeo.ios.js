@@ -7,7 +7,9 @@ import PropTypes from 'prop-types';
 import { StyleSheet, WebView } from 'react-native';
 
 function getVimeoPageURL(videoId) {
-  return 'https://myagi.github.io/react-native-vimeo/v1.html?vid=' + videoId;
+  return (
+    'https://myagi.github.io/react-native-vimeo/v0.3.0.html?vid=' + videoId
+  );
 }
 
 // NOTE: Injecting code here due to react-native webview issues when overriding

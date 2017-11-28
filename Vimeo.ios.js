@@ -57,26 +57,26 @@ export default class Vimeo extends React.Component {
     this.registerHandlers();
   }
 
-  api(method, cb) {
+  api = (method, cb) => {
     if (!this.state.ready) {
       throw new Error(
         'You cannot use the `api` method until `onReady` has been called'
       );
     }
     this.registerBridgeEventHandler(method, cb);
-  }
+  };
 
-  registerHandlers() {
+  registerHandlers = () => {
     this.registerBridgeEventHandler('ready', this.onReady);
     this.registerBridgeEventHandler('play', this.props.onPlay);
     this.registerBridgeEventHandler('playProgress', this.props.onPlayProgress);
     this.registerBridgeEventHandler('pause', this.props.onPause);
     this.registerBridgeEventHandler('finish', this.props.onFinish);
-  }
+  };
 
-  registerBridgeEventHandler(eventName, handler) {
+  registerBridgeEventHandler = (eventName, handler) => {
     this.handlers[eventName] = handler;
-  }
+  };
 
   onBridgeMessage = event => {
     const message = event.nativeEvent.data;

@@ -8,7 +8,7 @@ import { StyleSheet, WebView } from 'react-native';
 
 function getVimeoPageURL(videoId) {
   return (
-    'https://myagi.github.io/react-native-vimeo/v0.3.0.html?vid=' + videoId
+    'https://player.vimeo.com/video/' + videoId + '?byline=false&title=false'
   );
 }
 

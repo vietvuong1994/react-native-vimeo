@@ -8,7 +8,7 @@ import { StyleSheet, WebView } from 'react-native';
 
 function getVimeoPageURL(videoId) {
   return (
-    'https://player.vimeo.com/video/' + videoId + '?byline=false&title=false'
+      'https://player.vimeo.com/video/' + videoId + '?byline=false&title=false&autoplay=true&portrait=false'
   );
 }
 

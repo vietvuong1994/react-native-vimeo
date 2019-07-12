@@ -9,7 +9,7 @@ import WebView from 'react-native-webview'
 
 function getVimeoPageURL(videoId) {
   return (
-      'https://player.vimeo.com/video/' + videoId + '?byline=false&title=false&autoplay=true&portrait=false'
+      'https://player.vimeo.com/video/' + videoId + '?playsinline=false&byline=false&title=false&autoplay=true&portrait=false'
   );
 }
 
@@ -115,6 +115,7 @@ export default class Vimeo extends React.Component {
         scrollEnabled={false}
         onMessage={this.onBridgeMessage}
         onError={error => console.error(error)}
+        useWebKit={false}
       />
     );
   }

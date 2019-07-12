@@ -1,3 +1,5 @@
+This fork replaces WebView import from react-native with react-native-webview 
+
 # React Native Vimeo Player
 
 It is easy enough to embed Vimeo videos in your React Native app using a standard

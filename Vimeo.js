@@ -116,7 +116,6 @@ export default class Vimeo extends React.Component {
         onMessage={this.onBridgeMessage}
         onError={error => console.error(error)}
         allowsInlineMediaPlayback={true}
-        useWebKit={false}
       />
     );
   }

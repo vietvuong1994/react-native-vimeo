@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Vimeo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="117" column="40" selection-start-line="117" selection-start-column="40" selection-end-line="117" selection-end-column="40" />
+            <state relative-caret-position="563">
+              <caret line="118" column="8" lean-forward="true" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="8" />
               <folding>
                 <element signature="e#42#68#0" expanded="true" />
               </folding>
@@ -114,12 +114,12 @@
       <option name="presentableId" value="Default" />
       <updated>1551190475906</updated>
       <workItem from="1551190477090" duration="1066000" />
-      <workItem from="1562925682737" duration="2439000" />
+      <workItem from="1562925682737" duration="2575000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3505000" />
+    <option name="totallyTimeSpent" value="3641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -170,8 +170,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Vimeo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="117" column="40" selection-start-line="117" selection-start-column="40" selection-end-line="117" selection-end-column="40" />
+        <state relative-caret-position="563">
+          <caret line="118" column="8" lean-forward="true" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="8" />
           <folding>
             <element signature="e#42#68#0" expanded="true" />
           </folding>

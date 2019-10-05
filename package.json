@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Myagi/react-native-vimeo#readme",
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "react-native-webview": "^7.4.1"
   }
 }
